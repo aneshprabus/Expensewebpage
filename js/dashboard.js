@@ -85,12 +85,21 @@ if (error) {
             totalExpense += Number(expense.amount);
 
             table.innerHTML += `
-                <tr>
-                    <td>${expense.expense_date}</td>
-                    <td>${expense.expense_name}</td>
-                    <td>${expense.category}</td>
-                    <td>₹${Number(expense.amount).toLocaleString()}</td>
-                </tr>
+                table.innerHTML += `
+<tr>
+    <td>${expense.expense_date}</td>
+    <td>${expense.expense_name}</td>
+    <td>${expense.category}</td>
+    <td>₹${Number(expense.amount).toLocaleString()}</td>
+    <td>
+        <button
+            onclick="editExpense(${expense.id})"
+            class="edit-btn">
+            ✏️ Edit
+        </button>
+    </td>
+</tr>
+`;
             `;
 
         });
@@ -151,3 +160,14 @@ if (error) {
     console.log("Dashboard Loaded Successfully");
 
 });
+
+// ===================================
+// Edit Expense
+// ===================================
+
+function editExpense(id){
+
+    window.location.href =
+        `add-expense.html?id=${id}`;
+
+}
