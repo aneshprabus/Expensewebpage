@@ -132,8 +132,29 @@ document.getElementById("budget").innerHTML =
     document.getElementById("transactions").innerHTML =
         expenses ? expenses.length : 0;
 
-    document.getElementById("remaining").innerHTML =
-    "₹" + Math.max(monthlyBudget - totalExpense, 0).toLocaleString();
+ const remaining = monthlyBudget - totalExpense;
+
+const remainingElement = document.getElementById("remaining");
+
+remainingElement.innerHTML =
+    "₹" + remaining.toLocaleString();
+
+// Default Color
+remainingElement.style.color = "#22c55e"; // Green
+
+// 75% Budget Consumed
+if (totalExpense >= monthlyBudget * 0.75 && totalExpense < monthlyBudget) {
+
+    remainingElement.style.color = "#f59e0b"; // Amber
+
+}
+
+// Budget Exceeded
+if (totalExpense >= monthlyBudget) {
+
+    remainingElement.style.color = "#ef4444"; // Red
+
+}
 
     // =====================================
 // Monthly Expense Chart
