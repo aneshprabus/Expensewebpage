@@ -1,45 +1,313 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1">
+    <title>AI Expense Manager - Dashboard</title>
 
-<title>Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
 
-<link rel="stylesheet"
-href="css/dashboard.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 </head>
 
 <body>
 
-<div class="container">
+<!-- =========================
+     Sidebar
+========================= -->
 
-<h1>
-Welcome
-<span id="username">
-Loading...
-</span>
-</h1>
+<div class="sidebar">
 
-<p id="email">
-Loading email...
-</p>
+    <div class="logo">
 
-<button id="logout">
+        <i class="fa-solid fa-wallet"></i>
 
-Logout
+        <span>Expense Manager</span>
 
-</button>
+    </div>
+
+    <ul>
+
+        <li class="active">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+        </li>
+
+        <li>
+            <i class="fa-solid fa-receipt"></i>
+            Expenses
+        </li>
+
+        <li>
+            <i class="fa-solid fa-chart-pie"></i>
+            Reports
+        </li>
+
+        <li>
+            <i class="fa-solid fa-wallet"></i>
+            Budgets
+        </li>
+
+        <li>
+            <i class="fa-solid fa-gear"></i>
+            Settings
+        </li>
+
+    </ul>
 
 </div>
+
+<!-- =========================
+     Main Content
+========================= -->
+
+<div class="main">
+
+    <!-- Header -->
+
+    <div class="header">
+
+        <div>
+
+            <h1>
+
+                Welcome,
+
+                <span id="username">
+
+                    Loading...
+
+                </span>
+
+            </h1>
+
+            <p id="email">
+
+                Loading...
+
+            </p>
+
+        </div>
+
+        <div class="profile">
+
+            <img
+                id="avatar"
+                src="https://via.placeholder.com/70"
+                alt="Profile">
+
+            <button id="logout">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Dashboard Cards -->
+
+    <div class="cards">
+
+        <div class="card">
+
+            <i class="fa-solid fa-money-bill-wave"></i>
+
+            <h3>Total Expenses</h3>
+
+            <h2 id="totalExpense">
+
+                ₹0
+
+            </h2>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-wallet"></i>
+
+            <h3>Monthly Budget</h3>
+
+            <h2 id="budget">
+
+                ₹0
+
+            </h2>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-piggy-bank"></i>
+
+            <h3>Remaining</h3>
+
+            <h2 id="remaining">
+
+                ₹0
+
+            </h2>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-list"></i>
+
+            <h3>Total Transactions</h3>
+
+            <h2 id="transactions">
+
+                0
+
+            </h2>
+
+        </div>
+
+    </div>
+
+    <!-- Quick Actions -->
+
+    <div class="section">
+
+        <h2>
+
+            Quick Actions
+
+        </h2>
+
+        <div class="quick-actions">
+
+            <button>
+
+                <i class="fa-solid fa-plus"></i>
+
+                Add Expense
+
+            </button>
+
+            <button>
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                Reports
+
+            </button>
+
+            <button>
+
+                <i class="fa-solid fa-wallet"></i>
+
+                Budget
+
+            </button>
+
+            <button>
+
+                <i class="fa-solid fa-gear"></i>
+
+                Settings
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Recent Expenses -->
+
+    <div class="section">
+
+        <h2>
+
+            Recent Expenses
+
+        </h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Date</th>
+
+                    <th>Merchant</th>
+
+                    <th>Category</th>
+
+                    <th>Amount</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="expenseTable">
+
+                <tr>
+
+                    <td colspan="4">
+
+                        No expenses added yet.
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- Charts -->
+
+    <div class="section">
+
+        <h2>
+
+            Monthly Trend
+
+        </h2>
+
+        <div class="chart-placeholder">
+
+            📊
+
+            Charts will appear here in Phase 2
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        © 2026 AI Expense Manager | Powered by Supabase & GitHub
+
+    </footer>
+
+</div>
+
+<!-- Scripts -->
 
 <script src="js/supabase.js"></script>
 
