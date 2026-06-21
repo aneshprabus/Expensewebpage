@@ -156,6 +156,52 @@ if (totalExpense >= monthlyBudget) {
 
 }
 
+// ======================================
+// AI INSIGHT - BUDGET HEALTH
+// ======================================
+
+const budgetHealth =
+    document.getElementById("aiBudgetHealth");
+
+const budgetUsed =
+    (totalExpense / monthlyBudget) * 100;
+
+if (budgetUsed < 50){
+
+    budgetHealth.innerHTML =
+        "🟢 Excellent! You have used only <b>" +
+        budgetUsed.toFixed(1) +
+        "%</b> of your monthly budget.";
+
+}
+
+else if (budgetUsed < 75){
+
+    budgetHealth.innerHTML =
+        "🟡 Good! You have used <b>" +
+        budgetUsed.toFixed(1) +
+        "%</b> of your monthly budget.";
+
+}
+
+else if (budgetUsed < 100){
+
+    budgetHealth.innerHTML =
+        "🟠 Warning! You have already used <b>" +
+        budgetUsed.toFixed(1) +
+        "%</b> of your monthly budget.";
+
+}
+
+else{
+
+    budgetHealth.innerHTML =
+        "🔴 Alert! Budget exceeded by <b>₹" +
+        (totalExpense - monthlyBudget).toLocaleString() +
+        "</b>.";
+
+}
+    
     // =====================================
 // Monthly Expense Chart
 // =====================================
