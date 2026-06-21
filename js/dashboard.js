@@ -394,3 +394,134 @@ document.getElementById("setBudget").addEventListener("click", async () => {
     console.log("Dashboard Loaded Successfully");
 
 });
+
+// =====================================================
+// EXPORT TO EXCEL
+// =====================================================
+
+document.getElementById("exportExcel").addEventListener("click", exportExcel);
+
+async function exportExcel() {
+
+    const workbook = XLSX.utils.book_new();
+
+    // =====================================
+    // Expense Table
+    // =====================================
+
+    const table = document.querySelector("table");
+
+    const worksheet = XLSX.utils.table_to_sheet(table);
+
+    XLSX.utils.book_append_sheet(
+        workbook,
+        worksheet,
+        "Expenses"
+    );
+
+    // =====================================
+    // Dashboard Summary
+    // =====================================
+
+    const summary = [
+
+        ["AI Expense Manager"],
+
+        [],
+
+        ["Total Expense",
+            document.getElementById("totalExpense").innerText],
+
+        ["Monthly Budget",
+            document.getElementById("budget").innerText],
+
+        ["Remaining",
+            document.getElementById("remaining").innerText],
+
+        ["Transactions",
+            document.getElementById("transactions").innerText]
+
+    ];
+
+    const summarySheet =
+        XLSX.utils.aoa_to_sheet(summary);
+
+    XLSX.utils.book_append_sheet(
+
+        workbook,
+
+        summarySheet,
+
+        "Summary"
+
+    );
+
+    // =====================================
+    // Monthly Line Chart
+    // =====================================
+
+    const chart1 = document.getElementById("expenseChart");
+
+    const chart1Image = chart1.toDataURL("image/png");
+
+    const chartSheet1 = XLSX.utils.aoa_to_sheet([
+
+        ["Monthly Expense Chart"],
+
+        ["(Image cannot be embedded in Excel by SheetJS Community Edition)"],
+
+        ["Open Dashboard to view Chart"]
+
+    ]);
+
+    XLSX.utils.book_append_sheet(
+
+        workbook,
+
+        chartSheet1,
+
+        "Monthly Chart"
+
+    );
+
+    // =====================================
+    // Category Pie Chart
+    // =====================================
+
+    const chart2 = document.getElementById("categoryChart");
+
+    const chart2Image = chart2.toDataURL("image/png");
+
+    const chartSheet2 = XLSX.utils.aoa_to_sheet([
+
+        ["Expense Category Chart"],
+
+        ["(Image cannot be embedded in Excel by SheetJS Community Edition)"],
+
+        ["Open Dashboard to view Chart"]
+
+    ]);
+
+    XLSX.utils.book_append_sheet(
+
+        workbook,
+
+        chartSheet2,
+
+        "Category Chart"
+
+    );
+
+    // =====================================
+    // Download
+    // =====================================
+
+    XLSX.writeFile(
+
+        workbook,
+
+        "AI_Expense_Manager.xlsx"
+
+    );
+
+}
