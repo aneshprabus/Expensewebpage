@@ -82,10 +82,10 @@ if (error) {
 
         expenses.forEach(expense => {
 
-            totalExpense += Number(expense.amount);
+    totalExpense += Number(expense.amount);
 
-            table.innerHTML += `
-                table.innerHTML += `
+    table.innerHTML += `
+        table.innerHTML += `
 <tr>
     <td>${expense.expense_date}</td>
     <td>${expense.expense_name}</td>
@@ -100,10 +100,9 @@ if (error) {
     </td>
 </tr>
 `;
-            `;
+    `;
 
-        });
-
+});
     }
 
     document.getElementById("totalExpense").innerHTML =
