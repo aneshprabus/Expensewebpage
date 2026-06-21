@@ -1,3 +1,4 @@
+below is the dashbaord.js code,
 // ======================================================
 // AI Expense Manager
 // Dashboard JavaScript
@@ -72,7 +73,7 @@ if (error) {
 
         table.innerHTML = `
             <tr>
-                <td colspan="5">
+                <td colspan="4">
                     No expenses added yet.
                 </td>
             </tr>
@@ -82,10 +83,10 @@ if (error) {
 
         expenses.forEach(expense => {
 
-    totalExpense += Number(expense.amount);
+            totalExpense += Number(expense.amount);
 
-    table.innerHTML += `
-        table.innerHTML += `
+            table.innerHTML += `
+                table.innerHTML += `
 <tr>
     <td>${expense.expense_date}</td>
     <td>${expense.expense_name}</td>
@@ -100,9 +101,10 @@ if (error) {
     </td>
 </tr>
 `;
-    `;
+            `;
 
-});
+        });
+
     }
 
     document.getElementById("totalExpense").innerHTML =
