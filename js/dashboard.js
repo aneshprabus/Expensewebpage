@@ -82,23 +82,57 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     });
 
-    buttons[1].addEventListener("click", () => {
+//    buttons[1].addEventListener("click", () => {
 
-        alert("Reports module coming in Phase 3.");
+  //      alert("Reports module coming in Phase 3.");
 
-    });
+    //});
 
-    buttons[2].addEventListener("click", () => {
+    //buttons[2].addEventListener("click", () => {
 
-        alert("Budget module coming in Phase 3.");
+      //  alert("Budget module coming in Phase 3.");
 
-    });
+    //});
 
-    buttons[3].addEventListener("click", () => {
+    //buttons[3].addEventListener("click", () => {
 
-        alert("Settings module coming soon.");
+      //  alert("Settings module coming soon.");
 
-    });
+    //});
+
+    // -----------------------------
+// Quick Action Buttons
+// -----------------------------
+
+const buttons = document.querySelectorAll(".quick-actions button");
+
+// Add Expense
+buttons[0].addEventListener("click", () => {
+
+    window.location.href = "add-expense.html";
+
+});
+
+// Reports
+buttons[1].addEventListener("click", () => {
+
+    alert("Reports module coming in Phase 3.");
+
+});
+
+// Budget
+buttons[2].addEventListener("click", () => {
+
+    alert("Budget module coming in Phase 3.");
+
+});
+
+// Settings
+buttons[3].addEventListener("click", () => {
+
+    alert("Settings module coming soon.");
+
+});
 
     // -----------------------------
     // Welcome Animation
