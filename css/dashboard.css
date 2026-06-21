@@ -1544,6 +1544,152 @@ footer:hover{
 
 }
 
+/* ===========================================
+   Export Buttons
+=========================================== */
+
+.export-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+    flex-wrap:wrap;
+
+}
+
+.export-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+
+.export-buttons button{
+
+    padding:12px 22px;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    color:white;
+
+}
+
+#exportExcel{
+
+    background:#16a34a;
+
+}
+
+#exportExcel:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 20px rgba(22,163,74,.35);
+
+}
+
+#exportPDF{
+
+    background:#dc2626;
+
+}
+
+#exportPDF:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 20px rgba(220,38,38,.35);
+
+}
+
+.export-buttons i{
+
+    margin-right:8px;
+
+}
+
+/* ===========================================
+   Charts
+=========================================== */
+
+#expenseChart{
+
+    width:100%;
+
+    max-height:420px;
+
+    margin-top:20px;
+
+}
+
+#categoryChart{
+
+    width:100%;
+
+    max-height:420px;
+
+    margin-top:50px;
+
+}
+
+/* ===========================================
+   Export Friendly Print
+=========================================== */
+
+@media print{
+
+.sidebar,
+.quick-actions,
+#logout,
+#setBudget,
+.export-buttons{
+
+    display:none !important;
+
+}
+
+.main{
+
+    width:100%;
+
+    margin:0;
+
+    padding:20px;
+
+}
+
+canvas{
+
+    max-width:100% !important;
+
+}
+
+table{
+
+    page-break-inside:avoid;
+
+}
+
+}   
+
 /* ===========================
 End of File
 =========================== */
