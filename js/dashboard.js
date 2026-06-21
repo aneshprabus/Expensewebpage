@@ -192,17 +192,21 @@ document.getElementById("setBudget").addEventListener("click", async () => {
     if (isNaN(amount) || amount < 0) {
 
         alert("Invalid Budget");
-
         return;
 
     }
 
     const { error } = await supabaseClient
         .from("user_budget")
-        .upsert({
-            user_id: user.id,
-            monthly_budget: amount
-        });
+        .upsert(
+            {
+                user_id: user.id,
+                monthly_budget: amount
+            },
+            {
+                onConflict: "user_id"
+            }
+        );
 
     if (error) {
 
@@ -211,7 +215,7 @@ document.getElementById("setBudget").addEventListener("click", async () => {
 
     }
 
-    alert("Budget Saved Successfully");
+    alert("Budget Updated Successfully");
 
     location.reload();
 
