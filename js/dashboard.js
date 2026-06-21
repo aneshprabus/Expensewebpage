@@ -3,13 +3,9 @@
 // Dashboard JavaScript
 // ======================================================
 
-// Wait until page loads
 document.addEventListener("DOMContentLoaded", async () => {
 
-    // -----------------------------
-    // Check whether user is logged in
-    // -----------------------------
-
+    // Check Login
     const {
         data: { session }
     } = await supabaseClient.auth.getSession();
@@ -23,10 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const user = session.user;
 
-    // -----------------------------
-    // Display User Information
-    // -----------------------------
-
+    // User Details
     document.getElementById("username").textContent =
         user.user_metadata.user_name ||
         user.user_metadata.preferred_username ||
@@ -36,8 +29,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("email").textContent =
         user.email;
 
-    // GitHub Avatar
-
     if (user.user_metadata.avatar_url) {
 
         document.getElementById("avatar").src =
@@ -45,105 +36,52 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     }
 
-    // -----------------------------
-    // Default Dashboard Values
-    // -----------------------------
-
+    // Dashboard Cards
     document.getElementById("totalExpense").innerHTML = "₹0";
-
     document.getElementById("budget").innerHTML = "₹0";
-
     document.getElementById("remaining").innerHTML = "₹0";
-
     document.getElementById("transactions").innerHTML = "0";
 
-    // -----------------------------
     // Logout
-    // -----------------------------
+    document.getElementById("logout").addEventListener("click", async () => {
 
-    document.getElementById("logout")
-        .addEventListener("click", async () => {
+        await supabaseClient.auth.signOut();
 
-            await supabaseClient.auth.signOut();
-
-            window.location.href = "index.html";
-
-        });
-
-    // -----------------------------
-    // Quick Action Buttons
-    // -----------------------------
-
-    const buttons = document.querySelectorAll(".quick-actions button");
-
-    buttons[0].addEventListener("click", () => {
-
-        alert("Add Expense page will be created in Phase 2.");
+        window.location.href = "index.html";
 
     });
 
-//    buttons[1].addEventListener("click", () => {
+    // Quick Action Buttons
+    const buttons = document.querySelectorAll(".quick-actions button");
 
-  //      alert("Reports module coming in Phase 3.");
+    // Add Expense
+    buttons[0].addEventListener("click", () => {
 
-    //});
+        window.location.href = "add-expense.html";
 
-    //buttons[2].addEventListener("click", () => {
+    });
 
-      //  alert("Budget module coming in Phase 3.");
+    // Reports
+    buttons[1].addEventListener("click", () => {
 
-    //});
+        alert("Reports module coming in Phase 3.");
 
-    //buttons[3].addEventListener("click", () => {
+    });
 
-      //  alert("Settings module coming soon.");
+    // Budget
+    buttons[2].addEventListener("click", () => {
 
-    //});
+        alert("Budget module coming in Phase 3.");
 
-    // -----------------------------
-// Quick Action Buttons
-// -----------------------------
+    });
 
-const buttons = document.querySelectorAll(".quick-actions button");
+    // Settings
+    buttons[3].addEventListener("click", () => {
 
-// Add Expense
-buttons[0].addEventListener("click", () => {
+        alert("Settings module coming soon.");
 
-    window.location.href = "add-expense.html";
+    });
 
-});
-
-// Reports
-buttons[1].addEventListener("click", () => {
-
-    alert("Reports module coming in Phase 3.");
-
-});
-
-// Budget
-buttons[2].addEventListener("click", () => {
-
-    alert("Budget module coming in Phase 3.");
-
-});
-
-// Settings
-buttons[3].addEventListener("click", () => {
-
-    alert("Settings module coming soon.");
-
-});
-
-    // -----------------------------
-    // Welcome Animation
-    // -----------------------------
-
-    console.log("===================================");
-
-    console.log("AI Expense Manager Dashboard");
-
-    console.log("Logged in as :", user.email);
-
-    console.log("===================================");
+    console.log("Dashboard Loaded Successfully");
 
 });
