@@ -211,6 +211,79 @@ new Chart(
 
 );
 
+    // =====================================
+// Expense Category Pie Chart
+// =====================================
+
+const categoryTotals = {};
+
+expenses.forEach(expense => {
+
+    if (!categoryTotals[expense.category]) {
+
+        categoryTotals[expense.category] = 0;
+
+    }
+
+    categoryTotals[expense.category] += Number(expense.amount);
+
+});
+
+const categoryLabels = Object.keys(categoryTotals);
+
+const categoryValues = Object.values(categoryTotals);
+
+new Chart(
+
+    document.getElementById("categoryChart"),
+
+    {
+
+        type: "pie",
+
+        data: {
+
+            labels: categoryLabels,
+
+            datasets: [
+
+                {
+
+                    data: categoryValues
+
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            plugins: {
+
+                title: {
+
+                    display: true,
+
+                    text: "Expense by Category"
+
+                },
+
+                legend: {
+
+                    position: "right"
+
+                }
+
+            }
+
+        }
+
+    }
+
+);
     // -----------------------------
     // Logout
     // -----------------------------
