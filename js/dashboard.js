@@ -155,9 +155,9 @@ expenses.forEach(expense => {
 
 });
 
-const labels = Object.keys(monthlyTotals);
+const labels = Object.keys(monthlyTotals).sort();
 
-const values = Object.values(monthlyTotals);
+const values = labels.map(month => monthlyTotals[month]);
 
 new Chart(
 
