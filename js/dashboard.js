@@ -72,7 +72,7 @@ if (error) {
 
         table.innerHTML = `
             <tr>
-                <td colspan="4">
+                <td colspan="5">
                     No expenses added yet.
                 </td>
             </tr>
