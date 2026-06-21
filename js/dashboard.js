@@ -79,12 +79,6 @@ document.getElementById("budget").innerHTML =
 
     let totalExpense = 0;
 
-    // ======================================
-// AI Category Totals
-// ======================================
-
-const categoryTotals = {};
-
     if (error) {
 
         console.error(error);
@@ -113,16 +107,6 @@ const categoryTotals = {};
 
                 totalExpense += Number(expense.amount);
 
-                // Calculate category totals
-
-if (!categoryTotals[expense.category]) {
-
-    categoryTotals[expense.category] = 0;
-
-}
-
-categoryTotals[expense.category] += Number(expense.amount);
-
                 table.innerHTML += `
                     <tr>
                         <td>${expense.expense_date}</td>
@@ -141,42 +125,7 @@ categoryTotals[expense.category] += Number(expense.amount);
     // -----------------------------
     // Dashboard Cards
     // -----------------------------
-
-    // ======================================
-// AI INSIGHT - Highest Spending Category
-// ======================================
-
-let highestCategory = "";
-let highestAmount = 0;
-
-for (const category in categoryTotals) {
-
-    if (categoryTotals[category] > highestAmount) {
-
-        highestAmount = categoryTotals[category];
-        highestCategory = category;
-
-    }
-
-}
-
-if (highestCategory !== "") {
-
-    const percentage =
-        ((highestAmount / totalExpense) * 100).toFixed(1);
-
-    document.getElementById("aiHighestCategory").innerHTML =
-        `<b>${highestCategory}</b><br>
-         ₹${highestAmount.toLocaleString()} (${percentage}% of total expenses)`;
-
-} else {
-
-    document.getElementById("aiHighestCategory").innerHTML =
-        "No expenses available.";
-
-}
-
-    
+   
     document.getElementById("totalExpense").innerHTML =
         "₹" + totalExpense.toLocaleString();
 
