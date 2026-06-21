@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Expense Manager</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+}
+
+body{
+
+    background:linear-gradient(-45deg,#0f172a,#1e3a8a,#2563eb,#38bdf8);
+    background-size:400% 400%;
+    animation:gradient 12s ease infinite;
+    min-height:100vh;
+    color:white;
+
+}
+
+@keyframes gradient{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
+}
+
+header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 80px;
+
+}
+
+.logo{
+
+font-size:32px;
+font-weight:bold;
+letter-spacing:2px;
+
+}
+
+nav a{
+
+color:white;
+text-decoration:none;
+margin-left:35px;
+font-size:17px;
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#FFD54F;
+
+}
+
+.container{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:80px;
+
+}
+
+.left{
+
+width:55%;
+
+}
+
+.left h1{
+
+font-size:60px;
+margin-bottom:25px;
+line-height:1.2;
+
+}
+
+.left span{
+
+color:#FFD54F;
+
+}
+
+.left p{
+
+font-size:20px;
+line-height:1.8;
+color:#E3F2FD;
+
+}
+
+.buttons{
+
+margin-top:40px;
+
+}
+
+.btn{
+
+padding:16px 40px;
+border:none;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+margin-right:20px;
+transition:.3s;
+
+}
+
+.primary{
+
+background:#FFD54F;
+color:#000;
+
+}
+
+.primary:hover{
+
+transform:translateY(-5px);
+
+}
+
+.secondary{
+
+background:transparent;
+border:2px solid white;
+color:white;
+
+}
+
+.secondary:hover{
+
+background:white;
+color:#0f172a;
+
+}
+
+.right{
+
+width:38%;
+
+}
+
+.dashboard{
+
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(18px);
+border-radius:25px;
+padding:30px;
+box-shadow:0 15px 40px rgba(0,0,0,.35);
+
+}
+
+.dashboard h2{
+
+margin-bottom:25px;
+font-size:28px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.18);
+padding:20px;
+margin-bottom:18px;
+border-radius:18px;
+transition:.4s;
+
+}
+
+.card:hover{
+
+transform:scale(1.04);
+
+}
+
+.card h3{
+
+font-size:17px;
+margin-bottom:10px;
+
+}
+
+.amount{
+
+font-size:30px;
+font-weight:bold;
+
+}
+
+.green{
+
+color:#7CFC00;
+
+}
+
+.red{
+
+color:#ff8080;
+
+}
+
+.blue{
+
+color:#7dd3fc;
+
+}
+
+.stats{
+
+display:flex;
+justify-content:center;
+gap:30px;
+padding:70px;
+flex-wrap:wrap;
+
+}
+
+.stat{
+
+width:280px;
+padding:30px;
+background:rgba(255,255,255,.10);
+backdrop-filter:blur(18px);
+border-radius:20px;
+text-align:center;
+transition:.4s;
+
+}
+
+.stat:hover{
+
+transform:translateY(-10px);
+
+}
+
+.stat h2{
+
+font-size:42px;
+color:#FFD54F;
+
+}
+
+.stat p{
+
+margin-top:10px;
+font-size:18px;
+
+}
+
+footer{
+
+text-align:center;
+padding:30px;
+font-size:15px;
+color:#ddd;
+
+}
+
+@media(max-width:900px){
+
+.container{
+
+flex-direction:column;
+padding:40px;
+
+}
+
+.left,.right{
+
+width:100%;
+
+}
+
+.left{
+
+margin-bottom:50px;
+
+}
+
+header{
+
+flex-direction:column;
+
+}
+
+nav{
+
+margin-top:20px;
+
+}
+
+.left h1{
+
+font-size:42px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+💰 AI Expense Manager
+</div>
+
+<nav>
+
+<a href="#">Home</a>
+<a href="#">Dashboard</a>
+<a href="#">Expenses</a>
+<a href="#">Reports</a>
+<a href="#">Profile</a>
+
+</nav>
+
+</header>
+
+<div class="container">
+
+<div class="left">
+
+<h1>
+Manage Your <span>Expenses</span><br>
+Like Never Before
+</h1>
+
+<p>
+
+Track your personal and business expenses with AI-powered insights.
+Monitor spending, control budgets, and make smarter financial decisions
+through a beautiful and intuitive dashboard.
+
+</p>
+
+<div class="buttons">
+
+<button class="btn primary">
+Get Started
+</button>
+
+<button class="btn secondary">
+Learn More
+</button>
+
+</div>
+
+</div>
+
+<div class="right">
+
+<div class="dashboard">
+
+<h2>Expense Summary</h2>
+
+<div class="card">
+
+<h3>Total Budget</h3>
+
+<div class="amount blue">
+₹1,25,000
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Total Expenses</h3>
+
+<div class="amount red">
+₹82,650
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Remaining Budget</h3>
+
+<div class="amount green">
+₹42,350
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<section class="stats">
+
+<div class="stat">
+
+<h2>₹82K</h2>
+
+<p>Total Expenses</p>
+
+</div>
+
+<div class="stat">
+
+<h2>125</h2>
+
+<p>Transactions</p>
+
+</div>
+
+<div class="stat">
+
+<h2>15</h2>
+
+<p>Expense Categories</p>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 AI Expense Manager | Designed with ❤️
+
+</footer>
+
+</body>
+</html>
