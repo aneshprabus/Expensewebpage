@@ -135,6 +135,82 @@ document.getElementById("budget").innerHTML =
     document.getElementById("remaining").innerHTML =
     "₹" + Math.max(monthlyBudget - totalExpense, 0).toLocaleString();
 
+    // =====================================
+// Monthly Expense Chart
+// =====================================
+
+const monthlyTotals = {};
+
+expenses.forEach(expense => {
+
+    const month = expense.expense_date.substring(0, 7);
+
+    if (!monthlyTotals[month]) {
+
+        monthlyTotals[month] = 0;
+
+    }
+
+    monthlyTotals[month] += Number(expense.amount);
+
+});
+
+const labels = Object.keys(monthlyTotals);
+
+const values = Object.values(monthlyTotals);
+
+new Chart(
+
+    document.getElementById("expenseChart"),
+
+    {
+
+        type: "line",
+
+        data: {
+
+            labels: labels,
+
+            datasets: [
+
+                {
+
+                    label: "Monthly Expenses",
+
+                    data: values,
+
+                    borderWidth: 3,
+
+                    fill: true,
+
+                    tension: .3
+
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            plugins: {
+
+                legend: {
+
+                    display: true
+
+                }
+
+            }
+
+        }
+
+    }
+
+);
+
     // -----------------------------
     // Logout
     // -----------------------------
