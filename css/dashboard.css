@@ -1690,6 +1690,247 @@ table{
 
 }   
 
+/* ======================================================
+   MOBILE RESPONSIVE DESIGN
+   ====================================================== */
+
+@media screen and (max-width: 992px){
+
+/* Sidebar */
+
+.sidebar{
+
+    width:100%;
+    height:auto;
+    position:relative;
+    padding:20px;
+
+}
+
+.sidebar .logo{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+
+}
+
+.sidebar ul{
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:20px;
+    padding:0;
+
+}
+
+.sidebar ul li{
+
+    margin:8px;
+    padding:10px 15px;
+    font-size:15px;
+
+}
+
+/* Main */
+
+.main{
+
+    margin-left:0;
+    width:100%;
+    padding:20px;
+
+}
+
+/* Header */
+
+.header{
+
+    flex-direction:column;
+    text-align:center;
+    gap:20px;
+
+}
+
+.profile{
+
+    flex-direction:column;
+    gap:15px;
+
+}
+
+.profile img{
+
+    width:80px;
+    height:80px;
+
+}
+
+/* Dashboard Cards */
+
+.cards{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+
+}
+
+.card{
+
+    width:100%;
+
+}
+
+/* Quick Actions */
+
+.quick-actions{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+
+}
+
+.quick-actions button{
+
+    width:100%;
+
+}
+
+/* Charts */
+
+canvas{
+
+    width:100% !important;
+    height:auto !important;
+
+}
+
+/* Export Buttons */
+
+.export-header{
+
+    flex-direction:column;
+    align-items:flex-start;
+    gap:15px;
+
+}
+
+.export-buttons{
+
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+
+}
+
+.export-buttons button{
+
+    flex:1;
+    min-width:150px;
+
+}
+
+/* Table */
+
+.section{
+
+    overflow-x:auto;
+
+}
+
+table{
+
+    min-width:700px;
+
+}
+
+}
+
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media screen and (max-width:600px){
+
+.header h1{
+
+    font-size:24px;
+
+}
+
+.header p{
+
+    font-size:14px;
+
+}
+
+/* Cards */
+
+.cards{
+
+    grid-template-columns:1fr;
+
+}
+
+/* Quick Actions */
+
+.quick-actions{
+
+    grid-template-columns:1fr;
+
+}
+
+.quick-actions button{
+
+    width:100%;
+    font-size:16px;
+    padding:14px;
+
+}
+
+/* Export Buttons */
+
+.export-buttons{
+
+    flex-direction:column;
+
+}
+
+.export-buttons button{
+
+    width:100%;
+
+}
+
+/* Sidebar Menu */
+
+.sidebar ul{
+
+    flex-direction:column;
+
+}
+
+.sidebar ul li{
+
+    width:100%;
+    text-align:center;
+
+}
+
+.logo button{
+
+    width:100%;
+
+}
+
+}
+
 /* ===========================
 End of File
 =========================== */
