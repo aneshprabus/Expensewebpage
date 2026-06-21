@@ -1,65 +1,1529 @@
+/* ==========================================================
+   AI Expense Manager
+   Dashboard CSS - Part 1
+   Foundation / Layout / Sidebar / Header
+========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+    --secondary:#38bdf8;
+
+    --success:#22c55e;
+    --danger:#ef4444;
+    --warning:#f59e0b;
+
+    --dark:#0f172a;
+    --dark2:#1e293b;
+    --dark3:#334155;
+
+    --glass:rgba(255,255,255,.08);
+
+    --white:#ffffff;
+    --text:#e2e8f0;
+
+    --border:rgba(255,255,255,.08);
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
 body{
 
-margin:0;
+    font-family:'Poppins',sans-serif;
 
-background:#0f172a;
+    background:linear-gradient(
+        135deg,
+        #0f172a,
+        #1e3a8a,
+        #2563eb
+    );
 
-font-family:Segoe UI;
+    background-size:400% 400%;
 
-color:white;
+    animation:bgAnimation 15s ease infinite;
 
-display:flex;
+    color:var(--text);
 
-justify-content:center;
-
-align-items:center;
-
-height:100vh;
-
-}
-
-.container{
-
-width:500px;
-
-padding:40px;
-
-background:#1e293b;
-
-border-radius:20px;
-
-text-align:center;
-
-box-shadow:0 10px 30px rgba(0,0,0,.4);
+    min-height:100vh;
 
 }
 
-h1{
+@keyframes bgAnimation{
 
-font-size:40px;
+0%{
+
+background-position:0% 50%;
+
+}
+
+50%{
+
+background-position:100% 50%;
 
 }
 
-#username{
+100%{
 
-color:#FFD54F;
+background-position:0% 50%;
 
 }
+
+}
+
+/* ===========================
+Sidebar
+=========================== */
+
+.sidebar{
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    width:260px;
+
+    height:100vh;
+
+    background:rgba(15,23,42,.92);
+
+    backdrop-filter:blur(18px);
+
+    border-right:1px solid var(--border);
+
+    padding:35px 25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    z-index:1000;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#FFD54F;
+
+    margin-bottom:50px;
+
+}
+
+.logo i{
+
+    font-size:30px;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+}
+
+.sidebar li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:16px 20px;
+
+    margin-bottom:15px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    font-size:17px;
+
+    color:#dbeafe;
+
+}
+
+.sidebar li i{
+
+    width:24px;
+
+    text-align:center;
+
+}
+
+.sidebar li:hover{
+
+    background:rgba(255,255,255,.12);
+
+    transform:translateX(6px);
+
+}
+
+.sidebar li.active{
+
+    background:linear-gradient(
+        90deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    color:white;
+
+    box-shadow:0 10px 25px rgba(37,99,235,.4);
+
+}
+
+/* ===========================
+Main Area
+=========================== */
+
+.main{
+
+    margin-left:260px;
+
+    padding:40px;
+
+    min-height:100vh;
+
+}
+
+/* ===========================
+Header
+=========================== */
+
+.header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:40px;
+
+    flex-wrap:wrap;
+
+}
+
+.header h1{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.header h1 span{
+
+    color:#FFD54F;
+
+}
+
+.header p{
+
+    color:#cbd5e1;
+
+    font-size:16px;
+
+}
+
+.profile{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.profile img{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:3px solid white;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+
+}
+
+#logout{
+
+    border:none;
+
+    background:#ef4444;
+
+    color:white;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+#logout:hover{
+
+    background:#dc2626;
+
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+Section Titles
+=========================== */
+
+.section{
+
+    margin-top:35px;
+
+}
+
+.section h2{
+
+    margin-bottom:20px;
+
+    font-size:24px;
+
+    font-weight:600;
+
+}
+
+/* ===========================
+Glass Panel
+=========================== */
+
+.glass{
+
+    background:var(--glass);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+}
+
+/* ===========================
+Scrollbar
+=========================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#64748b;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#0f172a;
+
+}
+
+/* ==========================================================
+   AI Expense Manager
+   Dashboard CSS - Part 2
+   Dashboard Cards / Quick Actions
+========================================================== */
+
+/* ===========================
+Dashboard Cards
+=========================== */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:25px;
+
+    margin-bottom:40px;
+
+}
+
+.card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    transition:.35s;
+
+    cursor:pointer;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(37,99,235,.35);
+
+}
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:5px;
+
+    background:linear-gradient(
+        90deg,
+        #2563eb,
+        #38bdf8
+    );
+
+}
+
+.card i{
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:28px;
+
+    margin-bottom:20px;
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #38bdf8
+    );
+
+    box-shadow:0 10px 25px rgba(37,99,235,.35);
+
+}
+
+.card h3{
+
+    font-size:16px;
+
+    font-weight:500;
+
+    color:#cbd5e1;
+
+    margin-bottom:15px;
+
+}
+
+.card h2{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:white;
+
+}
+
+.card small{
+
+    display:block;
+
+    margin-top:10px;
+
+    color:#94a3b8;
+
+}
+
+/* ===========================
+Colored Top Borders
+=========================== */
+
+.card:nth-child(1)::before{
+
+    background:#ef4444;
+
+}
+
+.card:nth-child(2)::before{
+
+    background:#2563eb;
+
+}
+
+.card:nth-child(3)::before{
+
+    background:#22c55e;
+
+}
+
+.card:nth-child(4)::before{
+
+    background:#f59e0b;
+
+}
+
+/* ===========================
+Quick Actions
+=========================== */
+
+.quick-actions{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:22px;
+
+}
+
+.quick-actions button{
+
+    border:none;
+
+    outline:none;
+
+    padding:22px;
+
+    border-radius:18px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(16px);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.quick-actions button:hover{
+
+    transform:translateY(-6px);
+
+    background:#2563eb;
+
+    box-shadow:0 18px 35px rgba(37,99,235,.35);
+
+}
+
+.quick-actions button i{
+
+    font-size:22px;
+
+}
+
+/* ===========================
+Action Button Colors
+=========================== */
+
+.quick-actions button:nth-child(1){
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #38bdf8
+    );
+
+}
+
+.quick-actions button:nth-child(2){
+
+    background:linear-gradient(
+        135deg,
+        #22c55e,
+        #4ade80
+    );
+
+}
+
+.quick-actions button:nth-child(3){
+
+    background:linear-gradient(
+        135deg,
+        #f59e0b,
+        #fbbf24
+    );
+
+}
+
+.quick-actions button:nth-child(4){
+
+    background:linear-gradient(
+        135deg,
+        #8b5cf6,
+        #a78bfa
+    );
+
+}
+
+.quick-actions button:nth-child(1):hover{
+
+    background:linear-gradient(
+        135deg,
+        #1d4ed8,
+        #2563eb
+    );
+
+}
+
+.quick-actions button:nth-child(2):hover{
+
+    background:linear-gradient(
+        135deg,
+        #16a34a,
+        #22c55e
+    );
+
+}
+
+.quick-actions button:nth-child(3):hover{
+
+    background:linear-gradient(
+        135deg,
+        #d97706,
+        #f59e0b
+    );
+
+}
+
+.quick-actions button:nth-child(4):hover{
+
+    background:linear-gradient(
+        135deg,
+        #7c3aed,
+        #8b5cf6
+    );
+
+}
+
+/* ===========================
+Card Animation
+=========================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.card{
+
+    animation:fadeUp .7s ease;
+
+}
+
+.quick-actions{
+
+    animation:fadeUp .9s ease;
+
+}
+
+/* ==========================================================
+   AI Expense Manager
+   Dashboard CSS - Part 3
+   Recent Expenses Table / Chart Area / Footer
+========================================================== */
+
+/* ===========================
+Recent Expenses Section
+=========================== */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.10);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.20);
+
+}
+
+thead{
+
+    background:rgba(255,255,255,.12);
+
+}
+
+thead th{
+
+    text-align:left;
+
+    padding:18px 22px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#ffffff;
+
+}
+
+tbody td{
+
+    padding:18px 22px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    color:#e2e8f0;
+
+    font-size:15px;
+
+}
+
+tbody tr{
+
+    transition:.3s;
+
+}
+
+tbody tr:hover{
+
+    background:rgba(255,255,255,.06);
+
+}
+
+tbody td[colspan]{
+
+    text-align:center;
+
+    color:#94a3b8;
+
+    padding:35px;
+
+    font-style:italic;
+
+}
+
+/* ===========================
+Status Badges
+=========================== */
+
+.badge{
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.badge-food{
+
+    background:rgba(34,197,94,.20);
+
+    color:#4ade80;
+
+}
+
+.badge-travel{
+
+    background:rgba(59,130,246,.20);
+
+    color:#60a5fa;
+
+}
+
+.badge-shopping{
+
+    background:rgba(245,158,11,.20);
+
+    color:#fbbf24;
+
+}
+
+.badge-bills{
+
+    background:rgba(239,68,68,.20);
+
+    color:#f87171;
+
+}
+
+/* ===========================
+Chart Placeholder
+=========================== */
+
+.chart-placeholder{
+
+    min-height:320px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:15px;
+
+    font-size:22px;
+
+    color:#cbd5e1;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.20);
+
+    transition:.35s;
+
+}
+
+.chart-placeholder:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.chart-placeholder::before{
+
+    content:"📈";
+
+    font-size:70px;
+
+    opacity:.8;
+
+}
+
+/* ===========================
+Future Chart Container
+=========================== */
+
+.chart-container{
+
+    width:100%;
+
+    min-height:350px;
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    border:1px solid rgba(255,255,255,.10);
+
+}
+
+/* ===========================
+Section Card Wrapper
+=========================== */
+
+.section-card{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    margin-top:20px;
+
+}
+
+/* ===========================
+Expense Summary Bar
+=========================== */
+
+.summary-bar{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin-top:20px;
+
+}
+
+.summary-item{
+
+    flex:1;
+
+    min-width:220px;
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:20px;
+
+    border:1px solid rgba(255,255,255,.10);
+
+}
+
+.summary-item h4{
+
+    color:#cbd5e1;
+
+    margin-bottom:10px;
+
+    font-weight:500;
+
+}
+
+.summary-item h3{
+
+    font-size:28px;
+
+    color:#ffffff;
+
+}
+
+/* ===========================
+Footer
+=========================== */
+
+footer{
+
+    margin-top:50px;
+
+    padding:25px;
+
+    text-align:center;
+
+    color:#94a3b8;
+
+    font-size:14px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+/* ===========================
+Fade Animation
+=========================== */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+.section{
+
+    animation:fadeIn .8s ease;
+
+}
+
+/* ===========================
+Hover Glow Effects
+=========================== */
+
+table:hover{
+
+    box-shadow:0 20px 40px rgba(37,99,235,.15);
+
+}
+
+.chart-placeholder:hover{
+
+    box-shadow:0 20px 40px rgba(37,99,235,.15);
+
+}
+
+/* ==========================================================
+   AI Expense Manager
+   Dashboard CSS - Part 4
+   Responsive Design / Animations / Final Polish
+========================================================== */
+
+/* ===========================
+Smooth Transitions
+=========================== */
+
+*{
+
+    transition:background .25s,
+               color .25s,
+               border .25s,
+               box-shadow .25s,
+               transform .25s;
+
+}
+
+/* ===========================
+Selection
+=========================== */
+
+::selection{
+
+    background:#2563eb;
+
+    color:#ffffff;
+
+}
+
+/* ===========================
+Links
+=========================== */
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+/* ===========================
+Buttons
+=========================== */
 
 button{
 
-margin-top:30px;
-
-padding:15px 30px;
-
-border:none;
-
-border-radius:10px;
-
-font-size:18px;
-
-cursor:pointer;
-
-background:#FFD54F;
+    font-family:'Poppins',sans-serif;
 
 }
+
+button:active{
+
+    transform:scale(.97);
+
+}
+
+/* ===========================
+Card Hover Glow
+=========================== */
+
+.card:hover{
+
+    border-color:rgba(56,189,248,.45);
+
+}
+
+.quick-actions button:hover{
+
+    border-color:rgba(255,255,255,.25);
+
+}
+
+/* ===========================
+Table Hover
+=========================== */
+
+tbody tr:hover td{
+
+    color:#ffffff;
+
+}
+
+/* ===========================
+Sidebar Active Animation
+=========================== */
+
+.sidebar li{
+
+    position:relative;
+
+}
+
+.sidebar li::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:12%;
+
+    width:4px;
+
+    height:76%;
+
+    border-radius:10px;
+
+    background:transparent;
+
+    transition:.3s;
+
+}
+
+.sidebar li.active::before{
+
+    background:#FFD54F;
+
+}
+
+/* ===========================
+Header
+=========================== */
+
+.header{
+
+    gap:25px;
+
+}
+
+/* ===========================
+Profile Image Animation
+=========================== */
+
+.profile img{
+
+    transition:.35s;
+
+}
+
+.profile img:hover{
+
+    transform:rotate(5deg) scale(1.08);
+
+}
+
+/* ===========================
+Section Spacing
+=========================== */
+
+.section{
+
+    margin-bottom:40px;
+
+}
+
+/* ===========================
+Responsive - Tablet
+=========================== */
+
+@media(max-width:1100px){
+
+.main{
+
+    margin-left:220px;
+
+    padding:30px;
+
+}
+
+.sidebar{
+
+    width:220px;
+
+}
+
+.logo span{
+
+    font-size:20px;
+
+}
+
+.cards{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+.quick-actions{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+/* ===========================
+Responsive - Mobile
+=========================== */
+
+@media(max-width:768px){
+
+.sidebar{
+
+    position:relative;
+
+    width:100%;
+
+    height:auto;
+
+    border-right:none;
+
+    border-bottom:1px solid rgba(255,255,255,.10);
+
+    padding:20px;
+
+}
+
+.sidebar ul{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+}
+
+.sidebar li{
+
+    margin-bottom:0;
+
+    flex:1;
+
+    justify-content:center;
+
+    min-width:120px;
+
+}
+
+.main{
+
+    margin-left:0;
+
+    padding:20px;
+
+}
+
+.header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+}
+
+.profile{
+
+    width:100%;
+
+    justify-content:space-between;
+
+}
+
+.cards{
+
+    grid-template-columns:1fr;
+
+}
+
+.quick-actions{
+
+    grid-template-columns:1fr;
+
+}
+
+table{
+
+    display:block;
+
+    overflow-x:auto;
+
+    white-space:nowrap;
+
+}
+
+.chart-placeholder{
+
+    min-height:220px;
+
+}
+
+}
+
+/* ===========================
+Responsive - Small Mobile
+=========================== */
+
+@media(max-width:480px){
+
+.header h1{
+
+    font-size:26px;
+
+}
+
+.logo{
+
+    font-size:20px;
+
+}
+
+.logo span{
+
+    font-size:18px;
+
+}
+
+.profile img{
+
+    width:55px;
+
+    height:55px;
+
+}
+
+#logout{
+
+    padding:10px 18px;
+
+    font-size:14px;
+
+}
+
+.card h2{
+
+    font-size:28px;
+
+}
+
+.card{
+
+    padding:22px;
+
+}
+
+.quick-actions button{
+
+    padding:18px;
+
+    font-size:15px;
+
+}
+
+.section h2{
+
+    font-size:20px;
+
+}
+
+}
+
+/* ===========================
+Floating Animation
+=========================== */
+
+@keyframes floating{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-6px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+
+.card:nth-child(1){
+
+    animation:floating 5s ease-in-out infinite;
+
+}
+
+.card:nth-child(2){
+
+    animation:floating 6s ease-in-out infinite;
+
+}
+
+.card:nth-child(3){
+
+    animation:floating 7s ease-in-out infinite;
+
+}
+
+.card:nth-child(4){
+
+    animation:floating 8s ease-in-out infinite;
+
+}
+
+/* ===========================
+Scrollbar
+=========================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+    height:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#3b82f6;
+
+    border-radius:10px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#2563eb;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#0f172a;
+
+}
+
+/* ===========================
+Footer Glow
+=========================== */
+
+footer{
+
+    opacity:.85;
+
+}
+
+footer:hover{
+
+    opacity:1;
+
+}
+
+/* ===========================
+End of File
+=========================== */
