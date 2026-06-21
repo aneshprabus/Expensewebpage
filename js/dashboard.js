@@ -525,3 +525,173 @@ async function exportExcel() {
     );
 
 }
+
+// =====================================================
+// EXPORT TO PDF
+// =====================================================
+
+document.getElementById("exportPDF").addEventListener("click", exportPDF);
+
+async function exportPDF() {
+
+    const { jsPDF } = window.jspdf;
+
+    const pdf = new jsPDF("p", "mm", "a4");
+
+    let y = 15;
+
+    // ==========================================
+    // Title
+    // ==========================================
+
+    pdf.setFontSize(20);
+
+    pdf.text("AI Expense Manager", 15, y);
+
+    y += 10;
+
+    pdf.setFontSize(12);
+
+    pdf.text(
+        "Generated : " + new Date().toLocaleString(),
+        15,
+        y
+    );
+
+    y += 12;
+
+    // ==========================================
+    // Dashboard Summary
+    // ==========================================
+
+    pdf.autoTable({
+
+        startY: y,
+
+        head: [["Metric", "Value"]],
+
+        body: [
+
+            ["Total Expense",
+                document.getElementById("totalExpense").innerText],
+
+            ["Monthly Budget",
+                document.getElementById("budget").innerText],
+
+            ["Remaining",
+                document.getElementById("remaining").innerText],
+
+            ["Transactions",
+                document.getElementById("transactions").innerText]
+
+        ]
+
+    });
+
+    y = pdf.lastAutoTable.finalY + 15;
+
+    // ==========================================
+    // Expense Table
+    // ==========================================
+
+    const rows = [];
+
+    document.querySelectorAll("#expenseTable tr").forEach(row => {
+
+        const cols = row.querySelectorAll("td");
+
+        if (cols.length >= 4) {
+
+            rows.push([
+
+                cols[0].innerText,
+
+                cols[1].innerText,
+
+                cols[2].innerText,
+
+                cols[3].innerText
+
+            ]);
+
+        }
+
+    });
+
+    pdf.autoTable({
+
+        startY: y,
+
+        head: [["Date", "Expense", "Category", "Amount"]],
+
+        body: rows
+
+    });
+
+    // ==========================================
+    // Monthly Expense Chart
+    // ==========================================
+
+    pdf.addPage();
+
+    pdf.setFontSize(18);
+
+    pdf.text("Monthly Expense Trend", 15, 15);
+
+    const expenseCanvas = document.getElementById("expenseChart");
+
+    const expenseImage = expenseCanvas.toDataURL("image/png", 1.0);
+
+    pdf.addImage(
+
+        expenseImage,
+
+        "PNG",
+
+        10,
+
+        25,
+
+        185,
+
+        90
+
+    );
+
+    // ==========================================
+    // Category Chart
+    // ==========================================
+
+    pdf.addPage();
+
+    pdf.setFontSize(18);
+
+    pdf.text("Expense by Category", 15, 15);
+
+    const categoryCanvas = document.getElementById("categoryChart");
+
+    const categoryImage = categoryCanvas.toDataURL("image/png", 1.0);
+
+    pdf.addImage(
+
+        categoryImage,
+
+        "PNG",
+
+        15,
+
+        25,
+
+        170,
+
+        120
+
+    );
+
+    // ==========================================
+    // Save PDF
+    // ==========================================
+
+    pdf.save("AI_Expense_Manager_Report.pdf");
+
+}
