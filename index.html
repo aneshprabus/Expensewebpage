@@ -7,6 +7,40 @@
 
 <title>AI Expense Manager</title>
 
+<button id="githubLogin">
+    Login with GitHub
+</button>
+
+    <script>
+
+document
+.getElementById("githubLogin")
+.addEventListener("click", async () => {
+
+    const { error } = await supabaseClient.auth.signInWithOAuth({
+
+        provider: "github",
+
+        options: {
+
+            redirectTo:
+                window.location.origin +
+                "/dashboard.html"
+
+        }
+
+    });
+
+    if(error){
+
+        alert(error.message);
+
+    }
+
+});
+
+</script>
+    
 <style>
 
 *{
@@ -438,40 +472,7 @@ Learn More
 
 </section>
     
-<button id="githubLogin">
-    Login with GitHub
-</button>
-
-    <script>
-
-document
-.getElementById("githubLogin")
-.addEventListener("click", async () => {
-
-    const { error } = await supabaseClient.auth.signInWithOAuth({
-
-        provider: "github",
-
-        options: {
-
-            redirectTo:
-                window.location.origin +
-                "/dashboard.html"
-
-        }
-
-    });
-
-    if(error){
-
-        alert(error.message);
-
-    }
-
-});
-
-</script>
-    
+   
 <footer>
 
 © 2026 AI Expense Manager | Designed with ❤️
