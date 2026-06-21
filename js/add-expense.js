@@ -17,11 +17,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             e.preventDefault();
 
+            const user = session.user;
+
             const { error } = await supabaseClient
                 .from("expenses")
                 .insert({
 
-                    user_id: session.user.id,
+                    user_id: user.id,
+
+                    user_name:
+                        user.user_metadata.user_name ||
+                        user.user_metadata.preferred_username ||
+                        user.user_metadata.full_name ||
+                        user.email.split("@")[0],
+
+                    email: user.email,
 
                     expense_date: document.getElementById("expenseDate").value,
 
@@ -40,7 +50,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (error) {
 
                 alert(error.message);
-
                 return;
 
             }
