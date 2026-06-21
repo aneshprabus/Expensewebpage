@@ -37,11 +37,77 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // Dashboard Cards
-    document.getElementById("totalExpense").innerHTML = "₹0";
-    document.getElementById("budget").innerHTML = "₹0";
-    document.getElementById("remaining").innerHTML = "₹0";
-    document.getElementById("transactions").innerHTML = "0";
+    //document.getElementById("totalExpense").innerHTML = "₹0";
+    //document.getElementById("budget").innerHTML = "₹0";
+    //document.getElementById("remaining").innerHTML = "₹0";
+    //document.getElementById("transactions").innerHTML = "0";
+// Monthly Budget (Temporary Fixed Value)
+const monthlyBudget = 100000;
 
+document.getElementById("budget").innerHTML =
+    "₹" + monthlyBudget.toLocaleString();
+    // =====================================
+// Load Expenses from Supabase
+// =====================================
+
+const { data: expenses, error } = await supabaseClient
+    .from("expenses")
+    .select("*")
+    .eq("user_id", user.id)
+    .order("expense_date", { ascending: false });
+
+if (error) {
+
+    console.error(error);
+
+} else {
+
+    let totalExpense = 0;
+
+    const table = document.getElementById("expenseTable");
+
+    table.innerHTML = "";
+
+    if (expenses.length === 0) {
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="4">
+                    No expenses added yet.
+                </td>
+            </tr>
+        `;
+
+    } else {
+
+        expenses.forEach(expense => {
+
+            totalExpense += Number(expense.amount);
+
+            table.innerHTML += `
+                <tr>
+                    <td>${expense.expense_date}</td>
+                    <td>${expense.expense_name}</td>
+                    <td>${expense.category}</td>
+                    <td>₹${Number(expense.amount).toLocaleString()}</td>
+                </tr>
+            `;
+
+        });
+
+    }
+
+    document.getElementById("totalExpense").innerHTML =
+        "₹" + totalExpense.toLocaleString();
+
+    document.getElementById("transactions").innerHTML =
+        expenses.length;
+
+    document.getElementById("remaining").innerHTML =
+        "₹" + (monthlyBudget - totalExpense).toLocaleString();
+
+}
+    
     // Logout
     document.getElementById("logout").addEventListener("click", async () => {
 
