@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             alert("Expense Saved Successfully!");
 
-            window.location.href = "dashboard.html";
+            window.location.href = "dashboard.html?refresh=true";
 
         });
 
