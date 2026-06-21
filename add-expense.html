@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Expense</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body>
+
+<div class="main">
+
+    <h1>Add Expense</h1>
+
+    <br>
+
+    <form id="expenseForm">
+
+        <label>Expense Date</label><br>
+        <input type="date" id="expenseDate" required>
+
+        <br><br>
+
+        <label>Expense Name</label><br>
+        <input type="text" id="expenseName" placeholder="Enter Expense Name" required>
+
+        <br><br>
+
+        <label>Category</label><br>
+
+        <select id="category" required>
+
+            <option value="">Select Category</option>
+            <option>Food</option>
+            <option>Travel</option>
+            <option>Shopping</option>
+            <option>Bills</option>
+            <option>Medical</option>
+            <option>Entertainment</option>
+            <option>Rent</option>
+            <option>Others</option>
+
+        </select>
+
+        <br><br>
+
+        <label>Amount (₹)</label><br>
+
+        <input
+            type="number"
+            id="amount"
+            step="0.01"
+            required>
+
+        <br><br>
+
+        <label>Payment Method</label><br>
+
+        <select id="paymentMethod">
+
+            <option>Cash</option>
+            <option>UPI</option>
+            <option>Credit Card</option>
+            <option>Debit Card</option>
+            <option>Net Banking</option>
+
+        </select>
+
+        <br><br>
+
+        <label>Notes</label><br>
+
+        <textarea
+            id="notes"
+            rows="4"
+            placeholder="Optional"></textarea>
+
+        <br><br>
+
+        <button type="submit">
+
+            Save Expense
+
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="dashboard.html">
+
+        ← Back to Dashboard
+
+    </a>
+
+</div>
+
+<script src="js/supabase.js"></script>
+<script src="js/add-expense.js"></script>
+
+</body>
+
+</html>
