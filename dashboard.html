@@ -12,11 +12,11 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
+        rel="stylesheet">
 
     <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -25,9 +25,7 @@
 
 <body>
 
-<!-- =========================
-     Sidebar
-========================= -->
+<!-- Sidebar -->
 
 <div class="sidebar">
 
@@ -35,11 +33,11 @@
 
         <button onclick="location.href='add-expense.html'">
 
-    <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-plus"></i>
 
-    Add Expense
+            Add Expense
 
-</button>
+        </button>
 
         <span>Expense Manager</span>
 
@@ -76,9 +74,7 @@
 
 </div>
 
-<!-- =========================
-     Main Content
-========================= -->
+<!-- Main -->
 
 <div class="main">
 
@@ -92,28 +88,19 @@
 
                 Welcome,
 
-                <span id="username">
-
-                    Loading...
-
-                </span>
+                <span id="username">Loading...</span>
 
             </h1>
 
-            <p id="email">
-
-                Loading...
-
-            </p>
+            <p id="email">Loading...</p>
 
         </div>
 
         <div class="profile">
 
-            <img
-                id="avatar"
-                src="https://via.placeholder.com/70"
-                alt="Profile">
+            <img id="avatar"
+                 src="https://via.placeholder.com/70"
+                 alt="Profile">
 
             <button id="logout">
 
@@ -137,11 +124,7 @@
 
             <h3>Total Expenses</h3>
 
-            <h2 id="totalExpense">
-
-                ₹0
-
-            </h2>
+            <h2 id="totalExpense">₹0</h2>
 
         </div>
 
@@ -151,17 +134,13 @@
 
             <h3>Monthly Budget</h3>
 
-            <h2 id="budget">
-
-                ₹0
-
-            </h2>
+            <h2 id="budget">₹0</h2>
 
             <button id="setBudget">
 
-        Set Budget
+                Set Budget
 
-    </button>
+            </button>
 
         </div>
 
@@ -171,11 +150,7 @@
 
             <h3>Remaining</h3>
 
-            <h2 id="remaining">
-
-                ₹0
-
-            </h2>
+            <h2 id="remaining">₹0</h2>
 
         </div>
 
@@ -185,11 +160,7 @@
 
             <h3>Total Transactions</h3>
 
-            <h2 id="transactions">
-
-                0
-
-            </h2>
+            <h2 id="transactions">0</h2>
 
         </div>
 
@@ -199,11 +170,7 @@
 
     <div class="section">
 
-        <h2>
-
-            Quick Actions
-
-        </h2>
+        <h2>Quick Actions</h2>
 
         <div class="quick-actions">
 
@@ -247,59 +214,73 @@
 
     <div class="section">
 
-        <h2>
+        <h2>Recent Expenses</h2>
 
-            Recent Expenses
+        <table>
 
-        <!-- Recent Expenses -->
+            <thead>
 
-<div class="section">
+                <tr>
 
-    <h2>
+                    <th>Date</th>
 
-        Recent Expenses
+                    <th>Expense</th>
 
-    </h2>
+                    <th>Category</th>
 
-    <table>
+                    <th>Amount</th>
 
-        <thead>
+                </tr>
 
-            <tr>
-                <th>Date</th>
-                <th>Expense</th>
-                <th>Category</th>
-                <th>Amount</th>
-            </tr>
+            </thead>
 
-        </thead>
+            <tbody id="expenseTable">
 
-        <tbody id="expenseTable">
+                <tr>
 
-            <tr>
+                    <td colspan="4">
 
-                <td colspan="4">
+                        No expenses added yet.
 
-                    No expenses added yet.
+                    </td>
 
-                </td>
+                </tr>
 
-            </tr>
+            </tbody>
 
-        </tbody>
+        </table>
 
-    </table>
+    </div>
 
-</div>
     <!-- Charts -->
 
     <div class="section">
 
-        <h2>
+        <div class="export-header">
 
-            Monthly Trend
+            <h2>Monthly Analytics</h2>
 
-        </h2>
+            <div class="export-buttons">
+
+                <button id="exportExcel">
+
+                    <i class="fa-solid fa-file-excel"></i>
+
+                    Export Excel
+
+                </button>
+
+                <button id="exportPDF">
+
+                    <i class="fa-solid fa-file-pdf"></i>
+
+                    Export PDF
+
+                </button>
+
+            </div>
+
+        </div>
 
         <canvas id="expenseChart"></canvas>
 
@@ -319,8 +300,18 @@
 
 </div>
 
-<!-- Scripts -->
+<!-- Libraries -->
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
 <script src="js/supabase.js"></script>
 
 <script src="js/dashboard.js"></script>
