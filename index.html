@@ -1,47 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Expense Manager</title>
+
+    <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AI Expense Manager</title>
-
-<button id="githubLogin">
-    Login with GitHub
-</button>
-
-    <script>
-
-document
-.getElementById("githubLogin")
-.addEventListener("click", async () => {
-
-    const { error } = await supabaseClient.auth.signInWithOAuth({
-
-        provider: "github",
-
-        options: {
-
-            redirectTo:
-                window.location.origin +
-                "/dashboard.html"
-
-        }
-
-    });
-
-    if(error){
-
-        alert(error.message);
-
-    }
-
-});
-
-</script>
-    
-<style>
+    <style>
 
 *{
     margin:0;
@@ -347,7 +317,7 @@ font-size:42px;
 
 }
 
-</style>
+    </style>
 
 </head>
 
@@ -376,8 +346,11 @@ font-size:42px;
 <div class="left">
 
 <h1>
+
 Manage Your <span>Expenses</span><br>
+
 Like Never Before
+
 </h1>
 
 <p>
@@ -390,12 +363,16 @@ through a beautiful and intuitive dashboard.
 
 <div class="buttons">
 
-<button class="btn primary">
-Get Started
+<button class="btn primary" id="githubLogin">
+
+Login with GitHub
+
 </button>
 
 <button class="btn secondary">
+
 Learn More
+
 </button>
 
 </div>
@@ -413,7 +390,9 @@ Learn More
 <h3>Total Budget</h3>
 
 <div class="amount blue">
+
 ₹1,25,000
+
 </div>
 
 </div>
@@ -423,7 +402,9 @@ Learn More
 <h3>Total Expenses</h3>
 
 <div class="amount red">
+
 ₹82,650
+
 </div>
 
 </div>
@@ -433,7 +414,9 @@ Learn More
 <h3>Remaining Budget</h3>
 
 <div class="amount green">
+
 ₹42,350
+
 </div>
 
 </div>
@@ -471,13 +454,47 @@ Learn More
 </div>
 
 </section>
-    
-   
+
 <footer>
 
 © 2026 AI Expense Manager | Designed with ❤️
 
 </footer>
+
+<!-- Supabase Configuration -->
 <script src="js/supabase.js"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    document.getElementById("githubLogin").addEventListener("click", async () => {
+
+        const { error } = await supabaseClient.auth.signInWithOAuth({
+
+            provider: "github",
+
+            options: {
+
+                redirectTo:
+                    "https://aneshprabus.github.io/Expensewebpage/dashboard.html"
+
+            }
+
+        });
+
+        if (error) {
+
+            alert(error.message);
+
+        }
+
+    });
+
+});
+
+</script>
+
 </body>
+
 </html>
