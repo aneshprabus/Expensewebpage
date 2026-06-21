@@ -46,10 +46,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Monthly Budget
     // -----------------------------
 
-    const monthlyBudget = 100000;
+  let monthlyBudget = 0;
 
-    document.getElementById("budget").innerHTML =
-        "₹" + monthlyBudget.toLocaleString();
+const { data: budgetData } = await supabaseClient
+    .from("user_budget")
+    .select("*")
+    .eq("user_id", user.id)
+    .single();
+
+if (budgetData) {
+
+    monthlyBudget = Number(budgetData.monthly_budget);
+
+}
+
+document.getElementById("budget").innerHTML =
+    "₹" + monthlyBudget.toLocaleString();
 
     // -----------------------------
     // Load Expenses
@@ -121,7 +133,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         expenses ? expenses.length : 0;
 
     document.getElementById("remaining").innerHTML =
-        "₹" + (monthlyBudget - totalExpense).toLocaleString();
+    "₹" + Math.max(monthlyBudget - totalExpense, 0).toLocaleString();
 
     // -----------------------------
     // Logout
@@ -169,6 +181,42 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     });
 
+document.getElementById("setBudget").addEventListener("click", async () => {
+
+    const value = prompt("Enter Monthly Budget");
+
+    if (!value) return;
+
+    const amount = Number(value);
+
+    if (isNaN(amount) || amount < 0) {
+
+        alert("Invalid Budget");
+
+        return;
+
+    }
+
+    const { error } = await supabaseClient
+        .from("user_budget")
+        .upsert({
+            user_id: user.id,
+            monthly_budget: amount
+        });
+
+    if (error) {
+
+        alert(error.message);
+        return;
+
+    }
+
+    alert("Budget Saved Successfully");
+
+    location.reload();
+
+});
+    
     console.log("Dashboard Loaded Successfully");
 
 });
